@@ -12,7 +12,9 @@ navigationCompose = "2.8.9"
 hiltAndroid = "2.52"
 hiltNavigationCompose = "1.2.0"
 hilt = "2.52"
-
+objectboxAndroid = "4.1.0"
+objectboxGradlePlugin = "4.1.0"
+objectboxKotlin = "4.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,7 +35,9 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
-
+objectbox-android = { module = "io.objectbox:objectbox-android", version.ref = "objectboxAndroid" }
+objectbox-gradle-plugin = { module = "io.objectbox:objectbox-gradle-plugin", version.ref = "objectboxGradlePlugin" }
+objectbox-kotlin = { module = "io.objectbox:objectbox-kotlin", version.ref = "objectboxKotlin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
