@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     id 'kotlin-kapt'
+    id 'io.objectbox'
 }
 
 android {
@@ -63,4 +64,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
+
+    implementation(libs.objectbox.kotlin)
+    implementation(libs.objectbox.android)
 }
