@@ -27,8 +27,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.todokotlin.utils.NavigationUtils
 import com.example.todokotlin.R
+import com.example.todokotlin.utils.NavigationUtils
+
 object TodoItem {
 
     @Composable
@@ -64,7 +65,6 @@ object TodoItem {
                 )
 
                 Spacer(modifier = Modifier.width(12.dp))
-
                 Column(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.Center
