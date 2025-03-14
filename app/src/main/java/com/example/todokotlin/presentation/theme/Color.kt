@@ -1,4 +1,4 @@
-package com.example.todokotlin.ui.theme
+package com.example.todokotlin.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
