@@ -23,4 +23,8 @@ class TodoRepositoryImpl @Inject constructor() : ITodoRepository {
         todoBox.put(todoList)
     }
 
+    override fun deleteTodo(todo: Todo) {
+        todoBox.remove(todo.id)
+    }
+
 }
