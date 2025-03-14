@@ -14,4 +14,5 @@ class TodoUseCase @Inject constructor(
     fun addTodoLists(list : List<Todo>) {
         return repository.addTodoLists(list)
     }
+
 }
