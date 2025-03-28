@@ -67,4 +67,8 @@ dependencies {
 
     implementation(libs.objectbox.kotlin)
     implementation(libs.objectbox.android)
+
+    implementation(libs.androidx.material.icons.core)
+    implementation(libs.coil.compose)
+
 }

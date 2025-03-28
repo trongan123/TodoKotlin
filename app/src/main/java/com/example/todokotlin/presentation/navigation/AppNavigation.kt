@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.todokotlin.presentation.ui.MainScreen
+import com.example.todokotlin.presentation.ui.todo.AddTodo
 import com.example.todokotlin.presentation.ui.todo.TodoDetail
 import com.example.todokotlin.presentation.ui.todo.TodoList
 import com.example.todokotlin.utils.NavigationUtils
@@ -23,7 +24,7 @@ fun AppNavigation() {
                 TodoList.Screen()
             }
             composable(route = TodoDetail.route) {
-                TodoDetail.Screen()
+                TodoDetail.Screen("Todo Detail")
             }
         }
     }
