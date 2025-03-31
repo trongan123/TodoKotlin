@@ -10,8 +10,9 @@ import java.util.Calendar
 data class Todo(
     @Id var id: Long = 0L,
     var title: String,
-    var description: String,
+    var description: String?,
     var status: String,
+    var image: String?,
     @Convert(converter = CalendarConverter::class, dbType = Long::class)
     var createTime: Calendar = Calendar.getInstance()
 )

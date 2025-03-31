@@ -8,9 +8,11 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.todokotlin.presentation.ui.todo.TodoDetail
+import com.example.todokotlin.presentation.ui.search.SearchTodo
+import com.example.todokotlin.presentation.ui.todo.AddTodo
 import com.example.todokotlin.presentation.ui.todo.TodoList
 import com.example.todokotlin.presentation.ui.view.BottomNavigationBar
+import com.example.todokotlin.utils.NavigationUtils
 
 object MainScreen {
 
@@ -18,24 +20,21 @@ object MainScreen {
 
     @Composable
     fun Screen() {
-        val pagerState = rememberPagerState(pageCount = { 2 })
+        val pagerState = rememberPagerState(initialPage = 1, pageCount = { 3 })
+        NavigationUtils.setPagerState(pagerState)
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            bottomBar = {
-                BottomNavigationBar(pagerState)
-            }
-        ) { innerPadding ->
+            bottomBar = { BottomNavigationBar(pagerState) }) { innerPadding ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding),
             ) {
-                HorizontalPager(
-                    state = pagerState
-                ) { page ->
+                HorizontalPager(state = pagerState) { page ->
                     when (page) {
-                        0 -> TodoList.Screen()
-                        1 -> TodoDetail.Screen()
+                        0 -> SearchTodo.Screen()
+                        1 -> TodoList.Screen()
+                        2 -> AddTodo.Screen()
                     }
                 }
             }
