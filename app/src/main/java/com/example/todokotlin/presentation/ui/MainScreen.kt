@@ -13,7 +13,8 @@ import com.example.todokotlin.presentation.ui.search.SearchTodo
 import com.example.todokotlin.presentation.ui.todo.AddTodo
 import com.example.todokotlin.presentation.ui.todo.TodoList
 import com.example.todokotlin.presentation.ui.view.BottomNavigationBar
-import com.example.todokotlin.utils.NavigationUtils
+import com.example.todokotlin.utils.BottomNavigationUtils
+import com.example.todokotlin.utils.PickMediaUtils
 
 object MainScreen {
 
@@ -22,9 +23,12 @@ object MainScreen {
     @Composable
     fun Screen() {
         val pagerState = rememberPagerState(initialPage = 1, pageCount = { 3 })
-        NavigationUtils.setPagerState(pagerState)
+        BottomNavigationUtils.setPagerState(pagerState)
+
         Scaffold(
-            modifier = Modifier.fillMaxSize().systemBarsPadding(),
+            modifier = Modifier
+                .fillMaxSize()
+                .systemBarsPadding(),
             bottomBar = { BottomNavigationBar(pagerState) }) { innerPadding ->
             Column(
                 modifier = Modifier
@@ -32,6 +36,7 @@ object MainScreen {
                     .padding(innerPadding),
             ) {
                 HorizontalPager(state = pagerState) { page ->
+                    BottomNavigationUtils.handleSelectedNavigation(pagerState.currentPage)
                     when (page) {
                         0 -> SearchTodo.Screen()
                         1 -> TodoList.Screen()
@@ -40,5 +45,7 @@ object MainScreen {
                 }
             }
         }
+
+        PickMediaUtils.handlePickMedia()
     }
 }

@@ -14,27 +14,28 @@ import androidx.compose.ui.unit.dp
 import com.example.todokotlin.R
 import com.example.todokotlin.presentation.ui.todo.AddTodo
 import com.example.todokotlin.presentation.ui.todo.TodoList
+import com.example.todokotlin.utils.BottomNavigationUtils
 import com.example.todokotlin.utils.CoroutineUtils
 
 @Composable
 fun BottomNavigationBar(pagerState: PagerState) {
-    val selectedNavigationIndex = rememberSaveable { mutableIntStateOf(1) }
+    BottomNavigationUtils.setSelectedNavigationIndex(rememberSaveable { mutableIntStateOf(1) })
     NavigationBar(
         modifier = Modifier.height(80.dp),
         containerColor = Color.White
     ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
-                selected = selectedNavigationIndex.intValue == pagerState.currentPage,
+                selected = BottomNavigationUtils.isSelectedNavigation(pagerState.currentPage),
                 onClick = {
                     CoroutineUtils.launchOnMain {
                         pagerState.scrollToPage(index)
-                        selectedNavigationIndex.intValue = index
+                        BottomNavigationUtils.handleSelectedNavigation(index)
                     }
                 },
                 icon = {
                     IconView(
-                        if (selectedNavigationIndex.intValue == index) item.iconSelected else item.iconDefault,
+                        if (BottomNavigationUtils.isSelectedNavigation(index)) item.iconSelected else item.iconDefault,
                         size = 26
                     )
                 },

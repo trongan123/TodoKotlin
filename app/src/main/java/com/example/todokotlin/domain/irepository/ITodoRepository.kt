@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ITodoRepository {
 
-    fun getTodoLists(): List<Todo>
+    fun getTodoLists(): Flow<List<Todo>>
     fun searchTodoLists(key: String): Flow<List<Todo>>
     fun getTodoById(todoId: Long): Todo
 

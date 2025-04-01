@@ -23,7 +23,7 @@ class DetailTodoUseCase @Inject constructor(private val repository: ITodoReposit
         }
 
         CoroutineUtils.launchBackground {
-            repository.addTodo(todo)
+            repository.updateTodo(todo)
         }
 
         return true

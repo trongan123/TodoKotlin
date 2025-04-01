@@ -1,5 +1,6 @@
 package com.example.todokotlin.presentation.ui.search
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,8 +14,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.todokotlin.R
 import com.example.todokotlin.presentation.ui.view.TodoItem
 import com.example.todokotlin.presentation.viewmodel.SearchViewModel
 
@@ -24,7 +27,10 @@ object SearchTodo {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Screen(viewModel: SearchViewModel = hiltViewModel()) {
+    fun Screen(
+        viewModel: SearchViewModel = hiltViewModel(),
+        content: Context = LocalContext.current
+    ) {
         val searchQuery by viewModel.searchQuery.collectAsState()
         val todoList by viewModel.todoList.collectAsState()
         val listState = rememberLazyListState()
@@ -35,7 +41,12 @@ object SearchTodo {
                 onValueChange = {
                     viewModel.updateSearchQuery(it)
                 },
-                leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Search") },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = content.getString(R.string.search)
+                    )
+                },
                 placeholder = { Text("Search...") },
                 modifier = Modifier.run {
                     fillMaxWidth()
@@ -53,13 +64,15 @@ object SearchTodo {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        "Search Not Found",
+                        content.getString(R.string.search_not_found),
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
             } else {
                 LazyColumn(
-                    Modifier.fillMaxSize(),
+                    Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 10.dp),
                     state = listState
                 ) {
                     itemsIndexed(todoList, key = { _, item -> item.id }) { _, item ->
