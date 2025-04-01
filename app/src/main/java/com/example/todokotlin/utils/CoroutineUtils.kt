@@ -8,7 +8,7 @@ import kotlinx.coroutines.sync.Semaphore
 
 object CoroutineUtils {
     val numberOfCores = Runtime.getRuntime().availableProcessors()
-    val semaphore = Semaphore(numberOfCores * 2)
+    val semaphore = Semaphore(numberOfCores)
     private val supervisorJob = SupervisorJob()
     private val backgroundScope = CoroutineScope(Dispatchers.IO + supervisorJob)
     private val mainScope = CoroutineScope(Dispatchers.Main + supervisorJob)
@@ -28,7 +28,8 @@ object CoroutineUtils {
         mainScope.launch { task() }
     }
 
+    // Hủy tất cả coroutine con
     fun cancelAll() {
-        supervisorJob.cancel() // Hủy tất cả coroutine con
+        supervisorJob.cancel()
     }
 }

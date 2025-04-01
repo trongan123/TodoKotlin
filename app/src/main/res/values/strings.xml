@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">TodoKotlin</string>
     <string name="permission_denied_message">If you reject permission,you can not use this service Please turn on permissions at [Setting] > [Permission]</string>
+    <string name="set_image">Set Image</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="field_title_cant_empty">Field title can\'t empty</string>
+    <string name="field_description_cant_empty">Field description can\'t empt</string>
+    <string name="pending">Pending</string>
+    <string name="completed">Completed</string>
+    <string name="update_todo">Update Todo</string>
+    <string name="remove_todo">Remove Todo</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
+    <string name="do_you_want_to_remove_todo">Do you want to remove todo?</string>
+    <string name="search">Search</string>
+    <string name="search_not_found">Search Not Found</string>
+    <string name="add_todo_item">Add Todo Item</string>
+    <string name="list_todo">List Todo</string>
 </resources>

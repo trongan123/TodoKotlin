@@ -25,7 +25,6 @@ abstract class PermissionBuilder {
                 }
 
                 AppPermissionActivity.startActivity(context, intent, listener!!)
-                AppPermissionUtils.setFirstRequest(permissions!!)
             }
         }
     }

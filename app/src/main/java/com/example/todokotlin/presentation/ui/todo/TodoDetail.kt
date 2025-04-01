@@ -1,9 +1,6 @@
 package com.example.todokotlin.presentation.ui.todo
 
 import android.content.Context
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -67,19 +64,20 @@ object TodoDetail {
         var imageUri by remember { mutableStateOf<String?>(item.image) }
         var showDialogRemove by remember { mutableStateOf(false) }
 
+        var onclickImage: (() -> Unit) = {
+            viewModel.openPickMedia { uri ->
+                uri?.let {
+                    imageUri = FileUtils.extractFileFromUri(context, uri)
+                }
+            }
+        }
+
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 ToolBarView(title)
             }
         ) { innerPadding ->
-
-            val pickMedia =
-                rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-                    uri?.let {
-                        imageUri = FileUtils.extractFileFromUri(context, uri)
-                    }
-                }
 
             Column(
                 modifier = Modifier
@@ -97,19 +95,15 @@ object TodoDetail {
                         R.drawable.ic_image_default,
                         size = 110,
                         imageUri = imageUri,
-                        onclick = {
-                            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-                        }
+                        onclick = onclickImage
                     )
 
                     Button(
-                        onClick = {
-                            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-                        },
+                        onClick = onclickImage,
                         shape = RoundedCornerShape(20.dp),
                         modifier = Modifier.padding(top = 10.dp)
                     ) {
-                        Text("Set Image")
+                        Text(context.getString(R.string.set_image))
                     }
                 }
 
@@ -117,8 +111,9 @@ object TodoDetail {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 10.dp),
-                    contentError = "Field title can't empty",
-                    contentPlaceholder = "Title",
+                    contentError = context.getString(R.string.field_title_cant_empty),
+                    contentPlaceholder = context.getString(R.string.title),
+                    contentLabel = context.getString(R.string.title),
                     contentText = title,
                     onValueChange = {
                         title = it
@@ -129,8 +124,9 @@ object TodoDetail {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 10.dp),
-                    contentError = "Field description can't empty",
-                    contentPlaceholder = "Description",
+                    contentError = context.getString(R.string.field_description_cant_empty),
+                    contentPlaceholder = context.getString(R.string.description),
+                    contentLabel = context.getString(R.string.description),
                     contentText = description,
                     maxLine = 3,
                     minLine = 3,
@@ -147,7 +143,10 @@ object TodoDetail {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     SelectBoxView(
-                        listOf("pending", "completed"),
+                        listOf(
+                            context.getString(R.string.pending),
+                            context.getString(R.string.completed)
+                        ),
                         status,
                         onValueSelected = {
                             status = it
@@ -180,7 +179,7 @@ object TodoDetail {
                             )
                         },
                     ) {
-                        Text("Update Todo")
+                        Text(context.getString(R.string.update_todo))
                     }
 
                     Button(
@@ -193,7 +192,7 @@ object TodoDetail {
                         )
                     )
                     {
-                        Text("Remove Todo")
+                        Text(context.getString(R.string.remove_todo))
                     }
 
                     DialogRemove(showDialog = showDialogRemove,
@@ -213,22 +212,27 @@ object TodoDetail {
     }
 
     @Composable
-    fun DialogRemove(showDialog: Boolean, negativeButton: () -> Unit, positiveButton: () -> Unit) {
+    fun DialogRemove(
+        context: Context = LocalContext.current,
+        showDialog: Boolean,
+        negativeButton: () -> Unit,
+        positiveButton: () -> Unit
+    ) {
         if (showDialog) {
             AlertDialog(
                 onDismissRequest = { negativeButton() },
-                title = { Text("Remove") },
-                text = { Text("Do you want to remove todo?") },
+                title = { Text(context.getString(R.string.remove)) },
+                text = { Text(context.getString(R.string.do_you_want_to_remove_todo)) },
                 confirmButton = {
                     Button(onClick = {
                         positiveButton()
                     }) {
-                        Text("Remove")
+                        Text(context.getString(R.string.remove))
                     }
                 },
                 dismissButton = {
                     Button(onClick = { negativeButton() }) {
-                        Text("Cancel")
+                        Text(context.getString(R.string.cancel))
                     }
                 }
             )

@@ -8,7 +8,9 @@ import io.objectbox.Box
 import io.objectbox.query.QueryBuilder
 import io.objectbox.query.QueryBuilder.StringOrder
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -18,13 +20,18 @@ import javax.inject.Singleton
 class TodoRepositoryImpl @Inject constructor() : ITodoRepository {
     private val todoBox: Box<Todo> = ObjectBox.boxStore.boxFor(Todo::class.java)
 
-    override fun getTodoLists(): List<Todo> {
-        return todoBox
-            .query()
+    override fun getTodoLists(): Flow<List<Todo>> = callbackFlow {
+        val query = todoBox.query()
             .order(Todo_.createTime, QueryBuilder.DESCENDING)
             .build()
-            .find()
-    }
+
+        val subscription = query.subscribe()
+            .observer { todos ->
+                trySend(todos)
+            }
+
+        awaitClose { subscription.cancel() } 
+    }.flowOn(Dispatchers.IO)
 
     override fun searchTodoLists(key: String): Flow<List<Todo>> = flow {
         val result = todoBox
