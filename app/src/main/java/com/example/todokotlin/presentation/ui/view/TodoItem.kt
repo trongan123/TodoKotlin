@@ -1,4 +1,4 @@
-package com.example.todokotlin.presentation.ui.todo
+package com.example.todokotlin.presentation.ui.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.todokotlin.R
 import com.example.todokotlin.data.models.Todo
-import com.example.todokotlin.presentation.ui.view.IconView
+import com.example.todokotlin.presentation.ui.todo.TodoDetail
 import com.example.todokotlin.utils.NavigationUtils
 import java.text.SimpleDateFormat
 import java.util.Calendar

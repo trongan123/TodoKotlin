@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.todokotlin.presentation.ui.view.TodoItem
 import com.example.todokotlin.presentation.viewmodel.TodoViewModel
 
 object TodoList {
