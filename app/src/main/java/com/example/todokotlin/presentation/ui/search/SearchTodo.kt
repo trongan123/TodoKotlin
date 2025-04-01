@@ -15,7 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.todokotlin.R
 import com.example.todokotlin.presentation.ui.view.TodoItem
@@ -31,7 +33,7 @@ object SearchTodo {
         viewModel: SearchViewModel = hiltViewModel(),
         content: Context = LocalContext.current
     ) {
-        val searchQuery by viewModel.searchQuery.collectAsState()
+        val searchQuery by viewModel.searchKey.collectAsState()
         val todoList by viewModel.todoList.collectAsState()
         val listState = rememberLazyListState()
 
@@ -39,12 +41,12 @@ object SearchTodo {
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = {
-                    viewModel.updateSearchQuery(it)
+                    viewModel.updateSearchKey(it)
                 },
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = content.getString(R.string.search)
+                        contentDescription = ""
                     )
                 },
                 placeholder = { Text("Search...") },
@@ -65,7 +67,9 @@ object SearchTodo {
                 ) {
                     Text(
                         content.getString(R.string.search_not_found),
-                        style = MaterialTheme.typography.bodyMedium
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 24.sp
                     )
                 }
             } else {

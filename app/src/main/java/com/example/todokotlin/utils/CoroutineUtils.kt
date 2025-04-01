@@ -28,7 +28,8 @@ object CoroutineUtils {
         mainScope.launch { task() }
     }
 
+    // Hủy tất cả coroutine con
     fun cancelAll() {
-        supervisorJob.cancel() // Hủy tất cả coroutine con
+        supervisorJob.cancel()
     }
 }

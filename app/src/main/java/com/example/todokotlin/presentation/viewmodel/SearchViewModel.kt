@@ -20,19 +20,20 @@ class SearchViewModel @Inject constructor(
     private val searchUseCase: SearchUseCase
 ) : ViewModel() {
 
-    private val _searchQuery = MutableStateFlow("")
-    val searchQuery: StateFlow<String> = _searchQuery
+    private val _searchKey = MutableStateFlow("")
+    val searchKey: StateFlow<String> = _searchKey
 
+    //gọi searchTodoLists mỗi khi searchQuery thay đổi
     @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
-    val todoList: StateFlow<List<Todo>> = _searchQuery
+    val todoList: StateFlow<List<Todo>> = _searchKey
         .debounce(300)
         .flatMapLatest { query ->
             searchUseCase.searchTodoLists(query)
         }
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
-    fun updateSearchQuery(query: String) {
-        _searchQuery.value = query
+    fun updateSearchKey(key: String) {
+        _searchKey.value = key
     }
 
 }
