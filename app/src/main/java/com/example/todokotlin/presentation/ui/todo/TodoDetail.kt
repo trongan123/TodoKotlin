@@ -44,7 +44,6 @@ object TodoDetail {
 
     @Composable
     fun Screen(
-        title: String,
         viewModel: TodoViewModel = hiltViewModel(),
         context: Context = LocalContext.current
     ) {

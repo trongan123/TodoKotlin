@@ -3,6 +3,7 @@ package com.example.todokotlin.presentation.ui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
@@ -23,7 +24,7 @@ object MainScreen {
         val pagerState = rememberPagerState(initialPage = 1, pageCount = { 3 })
         NavigationUtils.setPagerState(pagerState)
         Scaffold(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().systemBarsPadding(),
             bottomBar = { BottomNavigationBar(pagerState) }) { innerPadding ->
             Column(
                 modifier = Modifier
