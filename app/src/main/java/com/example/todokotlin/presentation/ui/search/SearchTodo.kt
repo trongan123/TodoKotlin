@@ -1,6 +1,5 @@
 package com.example.todokotlin.presentation.ui.search
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.todokotlin.presentation.ui.todo.TodoItem
+import com.example.todokotlin.presentation.ui.view.TodoItem
 import com.example.todokotlin.presentation.viewmodel.SearchViewModel
 
 object SearchTodo {
