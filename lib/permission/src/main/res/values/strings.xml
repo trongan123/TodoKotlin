@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="open_settings">Open settings</string>
+    <string name="not_now">Not now</string>
+    <string name="notification">Notification</string>
+    <string name="confirm">Confirm</string>
+</resources>

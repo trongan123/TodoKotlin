@@ -24,7 +24,7 @@ fun AppNavigation() {
                 TodoList.Screen()
             }
             composable(route = TodoDetail.route) {
-                TodoDetail.Screen("Todo Detail")
+                TodoDetail.Screen()
             }
         }
     }

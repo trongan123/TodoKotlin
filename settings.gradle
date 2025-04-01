@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TodoKotlin"
 include ':app'
+include ':lib:permission'

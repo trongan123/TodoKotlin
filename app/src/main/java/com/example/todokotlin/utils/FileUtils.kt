@@ -2,7 +2,6 @@ package com.example.todokotlin.utils
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -14,7 +13,6 @@ object FileUtils {
             var fileImage = File(context.cacheDir, "${System.currentTimeMillis()}_image.jpeg")
 
             saveUriToFile(context, uri, fileImage)
-            Log.e("TAG", "extractFileFromUri: "+ fileImage.path )
             return fileImage.path
         } catch (_: Exception) {
             return null
