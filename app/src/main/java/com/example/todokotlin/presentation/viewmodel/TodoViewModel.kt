@@ -37,7 +37,7 @@ class TodoViewModel @Inject constructor(
 
     fun handleTodoLists() {
         viewModelScope.launch {
-            getTodoLists().collect() { todos ->
+            getTodoLists().collect { todos ->
                 _todoLists.value = todos
             }
         }

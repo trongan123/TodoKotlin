@@ -13,7 +13,7 @@ object PickMediaUtils {
     private var pickMedia: ManagedActivityResultLauncher<PickVisualMediaRequest, Uri?>? = null
 
     @Composable
-    fun handlePickMedia() {
+    fun HandlePickMedia() {
         pickMedia =
             rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
                 onMediaPicked.invoke(uri)

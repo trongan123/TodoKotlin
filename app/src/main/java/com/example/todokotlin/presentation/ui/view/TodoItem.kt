@@ -45,7 +45,7 @@ object TodoItem {
             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
             onClick = {
                 NavigationUtils.savedStateHandle("todoId", item.id)
-                NavigationUtils.navigate(TodoDetail.route)
+                NavigationUtils.navigate(TodoDetail.ROUTE)
             }
         ) {
             Row(

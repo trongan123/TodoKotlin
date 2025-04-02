@@ -12,8 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.todokotlin.R
-import com.example.todokotlin.presentation.ui.todo.AddTodo
-import com.example.todokotlin.presentation.ui.todo.TodoList
 import com.example.todokotlin.utils.BottomNavigationUtils
 import com.example.todokotlin.utils.CoroutineUtils
 
@@ -50,25 +48,21 @@ fun BottomNavigationBar(pagerState: PagerState) {
 
 data class NavigationItem(
     val iconDefault: Int,
-    val iconSelected: Int,
-    val route: String
+    val iconSelected: Int
 )
 
 val navigationItems =
     listOf(
         NavigationItem(
             R.drawable.ic_nav_search,
-            R.drawable.ic_nav_search_selected,
-            route = TodoList.route
+            R.drawable.ic_nav_search_selected
         ),
         NavigationItem(
             R.drawable.ic_home,
-            R.drawable.ic_home_selected,
-            route = TodoList.route
+            R.drawable.ic_home_selected
         ),
         NavigationItem(
             R.drawable.ic_add,
-            R.drawable.ic_add_selected,
-            route = AddTodo.route
+            R.drawable.ic_add_selected
         )
     )

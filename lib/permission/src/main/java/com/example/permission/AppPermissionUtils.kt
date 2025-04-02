@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 
 object AppPermissionUtils {
     const val REQ_CODE_REQUEST_SETTING = 2000
-    private val context: Context? get() = AppProvider.AppProviderContext.context
+    private val context: Context? get() = AppProvider.getAppContext()
 
     fun isDenied(permission: String): Boolean {
         return !isGranted(permission)

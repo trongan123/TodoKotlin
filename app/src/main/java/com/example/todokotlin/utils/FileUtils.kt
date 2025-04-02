@@ -27,6 +27,7 @@ object FileUtils {
                 }
             }
         } catch (_: IOException) {
+            return
         }
     }
 }

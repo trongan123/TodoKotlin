@@ -25,8 +25,6 @@ import com.example.todokotlin.presentation.viewmodel.SearchViewModel
 
 object SearchTodo {
 
-    const val route = "search_todo"
-
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun Screen(

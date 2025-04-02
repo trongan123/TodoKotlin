@@ -6,7 +6,7 @@ import androidx.annotation.StringRes
 
 
 abstract class PermissionBuilder {
-    private val context: Context? get() = AppProvider.AppProviderContext.context
+    private val context: Context? get() = AppProvider.getAppContext()
 
     private var listener: PermissionListener? = null
     private var permissions: Array<String>? = null

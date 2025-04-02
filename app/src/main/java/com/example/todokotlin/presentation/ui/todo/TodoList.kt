@@ -26,8 +26,6 @@ import com.example.todokotlin.R
 
 object TodoList {
 
-    const val route = "todo_list"
-
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun Screen(

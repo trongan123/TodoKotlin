@@ -24,12 +24,6 @@ object CoroutineUtils {
         }
     }
 
-    fun launchOnMain(task: suspend () -> Unit) {
-        mainScope.launch { task() }
-    }
+    fun launchOnMain(task: suspend () -> Unit) = mainScope.launch { task() }
 
-    // Hủy tất cả coroutine con
-    fun cancelAll() {
-        supervisorJob.cancel()
-    }
 }

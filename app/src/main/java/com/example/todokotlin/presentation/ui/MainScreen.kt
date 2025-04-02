@@ -18,7 +18,7 @@ import com.example.todokotlin.utils.PickMediaUtils
 
 object MainScreen {
 
-    const val route = "mainScreen"
+    const val ROUTE = "mainScreen"
 
     @Composable
     fun Screen() {
@@ -46,6 +46,6 @@ object MainScreen {
             }
         }
 
-        PickMediaUtils.handlePickMedia()
+        PickMediaUtils.HandlePickMedia()
     }
 }

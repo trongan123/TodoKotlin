@@ -1,6 +1,5 @@
 package com.example.permission
 
-import android.annotation.SuppressLint
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.Context
@@ -9,13 +8,14 @@ import android.net.Uri
 
 class AppProvider : ContentProvider() {
 
-    @SuppressLint("StaticFieldLeak")
-    object AppProviderContext {
-        var context: Context? = null
+    companion object {
+        private var appContext: Context? = null
+
+        fun getAppContext(): Context? = appContext
     }
 
     override fun onCreate(): Boolean {
-        AppProviderContext.context = context;
+        appContext = context
         return false
     }
 

@@ -23,7 +23,6 @@ import com.example.todokotlin.presentation.viewmodel.TodoViewModel
 import com.example.todokotlin.utils.FileUtils
 
 object AddTodo {
-    const val route = "add_todo"
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable

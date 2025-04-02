@@ -37,7 +37,7 @@ import com.example.todokotlin.utils.NavigationUtils
 
 object TodoDetail {
 
-    const val route = "todo_detail"
+    const val ROUTE = "todo_detail"
 
     @Composable
     fun Screen(
