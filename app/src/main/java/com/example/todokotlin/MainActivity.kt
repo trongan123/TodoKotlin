@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.todokotlin.presentation.navigation.AppNavigation
 import com.example.todokotlin.presentation.theme.TodoKotlinTheme
+import com.example.todokotlin.utils.NavigationUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,5 +19,10 @@ class MainActivity : ComponentActivity() {
                 AppNavigation()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        NavigationUtils.clearNavController() // Xóa tham chiếu khi Activity bị hủy
     }
 }

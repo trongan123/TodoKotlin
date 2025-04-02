@@ -2,33 +2,32 @@ package com.example.todokotlin.utils
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
+import java.lang.ref.WeakReference
 
 object NavigationUtils {
-
-    private var navController: NavController? = null
+    private var navControllerRef: WeakReference<NavController>? = null
 
     fun setNavController(navController: NavController?) {
-        this.navController = navController
-    }
-
-    fun getNavController(): NavController? {
-        return navController
+        navControllerRef = navController?.let { WeakReference(it) }
     }
 
     fun popBackStack() {
-        navController?.popBackStack()
+        navControllerRef?.get()?.popBackStack()
     }
 
     fun navigate(route: String) {
-        navController?.navigate(route)
+        navControllerRef?.get()?.navigate(route)
     }
 
     fun savedStateHandle(id: String, data: Any?) {
-        navController?.currentBackStackEntry?.savedStateHandle?.set(id, data)
+        navControllerRef?.get()?.currentBackStackEntry?.savedStateHandle?.set(id, data)
     }
 
     fun getSavedStateHandle(): SavedStateHandle? {
-        return navController?.previousBackStackEntry?.savedStateHandle
+        return navControllerRef?.get()?.previousBackStackEntry?.savedStateHandle
     }
 
+    fun clearNavController() {
+        navControllerRef = null
+    }
 }
