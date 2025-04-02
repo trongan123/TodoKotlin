@@ -23,6 +23,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        NavigationUtils.clearNavController() // Xóa tham chiếu khi Activity bị hủy
+        NavigationUtils.clearNavController()
     }
 }

@@ -1,4 +1,3 @@
 package com.example.permission
 
-class Builder : PermissionBuilder() {
-}
+class Builder : PermissionBuilder()
