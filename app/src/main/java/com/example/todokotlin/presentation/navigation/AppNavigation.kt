@@ -20,9 +20,6 @@ fun AppNavigation() {
             composable(route = MainScreen.route) {
                 MainScreen.Screen()
             }
-            composable(route = TodoList.route) {
-                TodoList.Screen()
-            }
             composable(route = TodoDetail.route) {
                 TodoDetail.Screen()
             }
